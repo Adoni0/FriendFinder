@@ -11,5 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get('/survey', function(req, res){
-    res.send(_dirname, 'survey.html')
+    res.send(_dirname, './data/survey.html')
+});
+
+app.get('/', function(req, res){
+    res.send(_dirname, './data/home.html')
 });
