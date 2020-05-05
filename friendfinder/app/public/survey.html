@@ -1,96 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <title>survey</title>
 </head>
+
 <body>
 
     <div class="container">
         <div class="jumbotron">
-          <h1>Friend Finder Survey</h1>
-          <h3>Find a friend with similar interests and personality traits!</h3>
-          <hr>
-          <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Friends</button></a>
+            <h1>Friend Finder Survey</h1>
+            <h3>Find a friend with similar interests and personality traits!</h3>
+            <hr>
+            <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Friends</button></a>
         </div>
         <div class="row">
-    
-          <div class="col-12">
-    
-            <div class="card">
-              <div class="card-header">
-                <h3><strong>Answer questions from a scale of 1 to 5 depending on how strongly you agree or disagree with the statement.</strong></h3>
-              </div>
-              <div class="card-body">
-                <form method="POST" role="form">
-    
-                  <div class="form-group">
-                    <label for="name">Video Games are a good use of ones time.</label>
-                    <input type="text" class="form-control" id="name">
+
+            <div class="col-12">
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">What is your name?</label>
+                    <input type="text" class="form-control name" id="exampleFormControlInput1">
                   </div>
 
-                  <div class="form-group">
-                    <label for="name">It is natural for children to keep secrets from their parents.</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3><strong>Answer questions from a scale of 1 to 5 depending on how strongly you agree or
+                                disagree with the statement.</strong></h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" role="form">
 
-                  <div class="form-group">
-                    <label for="name">Participation Trophies are a good idea.</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
+                            <div class="form-group">
+                                <label for="name">Video Games are a good use of ones time.</label>
+                                <input type="number" class="form-control" id="q1">
+                            </div>
 
-                  <div class="form-group">
-                    <label for="name">It is normal to use your cell-phone at least 3 hours per day.</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
+                            <div class="form-group">
+                                <label for="name">It is natural for children to keep secrets from their parents.</label>
+                                <input type="number" class="form-control" id="q2">
+                            </div>
 
-                  <div class="form-group">
-                    <label for="name">I prefer watching TV to reading a book.</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
+                            <div class="form-group">
+                                <label for="name">Participation Trophies are a good idea.</label>
+                                <input type="number" class="form-control" id="q3">
+                            </div>
 
-                  <div class="form-group">
-                    <label for="name">Beer tastes better than wine.</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
+                            <div class="form-group">
+                                <label for="name">It is normal to use your cell-phone at least 3 hours per day.</label>
+                                <input type="number" class="form-control" id="q4">
+                            </div>
 
-                  <div class="form-group">
-                    <label for="name">Dogs are preferable to cats.</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
-    
-                  <div class="form-group">
-                    <label for="role">I would rather vacation on a tropical island over a city.</label>
-                    <input type="text" class="form-control" id="role">
-                  </div>
-    
-                  <div class="form-group">
-                    <label for="age">Pizza is more enjoyable than burgers.</label>
-                    <input type="text" class="form-control" id="age">
-                  </div>
-    
-                  <div class="form-group">
-                    <label for="force-points">Tile floors are preferable to Wood floors</label>
-                    <input type="text" class="form-control" id="force-points">
-                  </div>
-    
-                </form>
-                <br>
-                <div class="text-right">
-                  <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Add to the Force</button>
+                            <div class="form-group">
+                                <label for="name">I prefer watching TV to reading a book.</label>
+                                <input type="number" class="form-control" id="q5">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Beer tastes better than wine.</label>
+                                <input type="number" class="form-control" id="q6">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Dogs are preferable to cats.</label>
+                                <input type="number" class="form-control" id="q7">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="role">I would rather vacation on a tropical island over a city.</label>
+                                <input type="number" class="form-control" id="q8">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age">Pizza is more enjoyable than burgers.</label>
+                                <input type="number" class="form-control" id="q9">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="force-points">Tile floors are preferable to Wood floors</label>
+                                <input type="number" class="form-control" id="q10">
+                            </div>
+
+                        </form>
+                        <br>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span
+                                    class="fa fa-fire"></span> Submit Survey</button>
+                        </div>
+                    </div>
                 </div>
-              </div>
+
             </div>
-    
-          </div>
         </div>
-      </div>
-    
+    </div>
+
+    <script type="text/javascript">
+       
+       $("#add-btn").on("click", function(event) {
+      event.preventDefault();
+      var newFriend = {
+        name: $(".name").val().trim(),
+        scores: [
+            $('#q1').val().trim(),
+            $('#q2').val().trim(),
+            $('#q3').val().trim(),
+            $('#q4').val().trim(),
+            $('#q5').val().trim(),
+            $('#q6').val().trim(),
+            $('#q7').val().trim(),
+            $('#q8').val().trim(),
+            $('#q9').val().trim(),
+            $('#q10').val().trim(),
+    ]
+        
+      };
+
+      $.post("/api/friends", newFriend)
+        .then(function(data) {
+          console.log("survey.html", data);
+          alert("Adding Friend...");
+        });
+    });
+
+    </script>
+
 </body>
+
 </html>
