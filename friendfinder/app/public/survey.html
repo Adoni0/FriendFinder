@@ -19,7 +19,7 @@
             <h1>Friend Finder Survey</h1>
             <h3>Find a friend with similar interests and personality traits!</h3>
             <hr>
-            <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Friends</button></a>
+            <a href="/api/friends"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Friends</button></a>
         </div>
         <div class="row">
 
@@ -119,8 +119,9 @@
             $('#q9').val().trim(),
             $('#q10').val().trim(),
     ]
-        
+    
       };
+      console.log(newFriend);
 
       $.post("/api/friends", newFriend)
         .then(function(data) {

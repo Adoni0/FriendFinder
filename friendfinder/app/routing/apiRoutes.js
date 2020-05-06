@@ -1,39 +1,47 @@
-var express = require("express");
-var path = require("path");
-var Friends = require('/friends.js');
 
-// Sets up the Express App
-// =============================================================
-var app = express();
-var PORT = process.env.PORT || 8080;
+var Friends = require('../data/friends.js');
 
-// Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+module.exports = function(app){
+
+
 
 app.get('/api/friends', function(req, res){
-    return res.json(friends);
-});
-
-app.post('/api/friends', function(req, res){
-    //This will be used to handle incoming survey results. This route will also 
-    //be used to handle the compatibility logic.
+    res.json(Friends);
 });
 
 app.post("/api/friends", function(req, res) {
     
-    var newFriend = req.body;
+    var newFriendScores = req.body.scores;
+    var compatable = {
+      name: '',
+      difference: 500
+    };
+    var totalDifference;
+
+    for(var i = 0; i < Friends.length; i++){
+        var currentFriendInDatabase = Friends[i];
+        totalDifference = 0;
+
+        for(var j = 0; j < currentFriendInDatabase.scores.length; j++){
+          var dataBaseFriendScore = currentFriendInDatabase.scores[j];
+          var newUserScore = newFriendScores[j];
+
+          totalDifference += Math.abs(parseInt(dataBaseFriendScore) - parseInt(newUserScore));
+        }
+        
+        if(totalDifference <= compatable.difference){
+          compatable.name = currentFriendInDatabase.name;
+          compatable.difference = totalDifference;
+        }
+    }
   
-    newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase();
+    newFriendScores.routeName = newFriendScores.name.replace(/\s+/g, "").toLowerCase();
   
     console.log(newFriend);
   
-    Friends.push(newFriend);
+    Friends.push(req.body);
   
-    res.json(newFriend);
+    res.json(compatable);
   });
 
-
-app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
+}
