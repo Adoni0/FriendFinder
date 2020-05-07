@@ -11,7 +11,7 @@ app.get('/api/friends', function(req, res){
 
 app.post("/api/friends", function(req, res) {
     
-    var newFriendScores = req.body.scores;
+    var newFriendScores = req.body.scores; //scores entered from html
     var compatable = {
       name: '',
       difference: 500
@@ -26,9 +26,11 @@ app.post("/api/friends", function(req, res) {
           var dataBaseFriendScore = currentFriendInDatabase.scores[j];
           var newUserScore = newFriendScores[j];
 
+          //absolute value of difference between scores of current friends and new friend added
           totalDifference += Math.abs(parseInt(dataBaseFriendScore) - parseInt(newUserScore));
         }
         
+        //smallest differnece between friends will be a compatable match
         if(totalDifference <= compatable.difference){
           compatable.name = currentFriendInDatabase.name;
           compatable.difference = totalDifference;
@@ -37,7 +39,7 @@ app.post("/api/friends", function(req, res) {
   
     newFriendScores.routeName = newFriendScores.name.replace(/\s+/g, "").toLowerCase();
   
-    console.log(newFriend);
+    // console.log(newFriend);
   
     Friends.push(req.body);
   

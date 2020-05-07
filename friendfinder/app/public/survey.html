@@ -19,7 +19,8 @@
             <h1>Friend Finder Survey</h1>
             <h3>Find a friend with similar interests and personality traits!</h3>
             <hr>
-            <a href="/api/friends"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Friends</button></a>
+            <a href="/api/friends"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View
+                    Friends</button></a>
         </div>
         <div class="row">
 
@@ -28,7 +29,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlInput1">What is your name?</label>
                     <input type="text" class="form-control name" id="exampleFormControlInput1">
-                  </div>
+                </div>
 
                 <div class="card">
                     <div class="card-header">
@@ -102,33 +103,48 @@
     </div>
 
     <script type="text/javascript">
-       
-       $("#add-btn").on("click", function(event) {
-      event.preventDefault();
-      var newFriend = {
-        name: $(".name").val().trim(),
-        scores: [
-            $('#q1').val().trim(),
-            $('#q2').val().trim(),
-            $('#q3').val().trim(),
-            $('#q4').val().trim(),
-            $('#q5').val().trim(),
-            $('#q6').val().trim(),
-            $('#q7').val().trim(),
-            $('#q8').val().trim(),
-            $('#q9').val().trim(),
-            $('#q10').val().trim(),
-    ]
-    
-      };
-      console.log(newFriend);
 
-      $.post("/api/friends", newFriend)
-        .then(function(data) {
-          console.log("survey.html", data);
-          alert("Adding Friend...");
+        $("#add-btn").on("click", function (event) {
+            event.preventDefault();
+            var newFriend = {
+                name: $(".name").val().trim(),
+                scores: [
+                    $('#q1').val().trim(),
+                    $('#q2').val().trim(),
+                    $('#q3').val().trim(),
+                    $('#q4').val().trim(),
+                    $('#q5').val().trim(),
+                    $('#q6').val().trim(),
+                    $('#q7').val().trim(),
+                    $('#q8').val().trim(),
+                    $('#q9').val().trim(),
+                    $('#q10').val().trim(),
+                ]
+
+            };
+
+                $(".name").val('');
+
+                $('#q1').val('');
+                $('#q2').val('');
+                $('#q3').val('');
+                $('#q4').val('');
+                $('#q5').val('');
+                $('#q6').val('');
+                $('#q7').val('');
+                $('#q8').val('');
+                $('#q9').val('');
+                $('#q10').val('');
+
+
+                console.log(newFriend);
+
+            $.post("/api/friends", newFriend)
+                .then(function (data) {
+                    console.log("survey.html", data);
+                    alert("Adding Friend...");
+                });
         });
-    });
 
     </script>
 
