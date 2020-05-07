@@ -137,6 +137,16 @@
                 $('#q10').val('');
 
 
+                //if user enters a number greater than 5 it is logged as a 5 and a number less than 1 is logged as a 1
+                for(var i = 0; i < newFriend.scores.length; i++){
+                    if(newFriend.scores[i] > 5){
+                        newFriend.scores[i] = 5;
+                    } else if(newFriend.scores[i] < 1){
+                        newFriend.scores[i] = 1;
+                    }
+                };
+
+
                 console.log(newFriend);
 
             $.post("/api/friends", newFriend)
