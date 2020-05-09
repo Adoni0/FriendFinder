@@ -108,7 +108,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Compatability test</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -193,10 +193,11 @@
                                 modal.attr('data-target', '#m1');
                                 //add h3 tag to modal body with compatable.name and compatable.difference
                                 var modalDiv = $('.modal-body');
-                                modalDiv.prepend(('<h3>You are compatable with: </h3>') + compatable.name);
-                                modalDiv.prepend(('<h3>You are have a small difference of only: </h3>') + compatable.difference);
+                                modalDiv.prepend(('<h4>You are compatable with: </h4>') + compatable.name);
+                                modalDiv.prepend(('<h4>You are have a small difference of only: </h4>') + compatable.difference + ' points');
 
                                 $('#m1').modal('toggle');
+
                             });
                     });
 
