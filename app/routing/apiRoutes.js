@@ -46,14 +46,7 @@ app.post("/api/friends", function(req, res) {
   
     res.json(compatable);
 
-    //data-toggle='modal' data-target='#m1'
-    var modal = $("#add-btn");
-    modal.attr('data-toggle', 'modal');
-    modal.attr('data-target', '#m1');
-    //add h3 tag to modal body with compatable.name and compatable.difference
-    var modalDiv = $('.modal-body');
-    modalDiv.prepend($('<h3>You are compatable with: </h3>') + compatable.name);
-    modalDiv.prepend($('<h3>You are have a small difference of only: </h3>') + compatable.difference);
+    
 
 
   });

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script type='text/javascript' src='../routing/apiRoutes.js'></script>
     <title>survey</title>
 </head>
 
@@ -104,14 +103,15 @@
     </div>
 
     <!-- Modal -->
-    <div id='m1' class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div id='m1' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
 
                 <div class="row">
@@ -131,63 +131,76 @@
 
                 </div>
 
-    <script type="text/javascript">
+                <script type="text/javascript">
 
 
-        $("#add-btn").on("click", function (event) {
-            event.preventDefault();
-            var newFriend = {
-                name: $(".name").val().trim(),
-                scores: [
-                    $('#q1').val().trim(),
-                    $('#q2').val().trim(),
-                    $('#q3').val().trim(),
-                    $('#q4').val().trim(),
-                    $('#q5').val().trim(),
-                    $('#q6').val().trim(),
-                    $('#q7').val().trim(),
-                    $('#q8').val().trim(),
-                    $('#q9').val().trim(),
-                    $('#q10').val().trim(),
-                ]
+                    $("#add-btn").on("click", function (event) {
+                        event.preventDefault();
 
-            };
+                        var newFriend = {
+                            name: $(".name").val().trim(),
+                            scores: [
+                                $('#q1').val().trim(),
+                                $('#q2').val().trim(),
+                                $('#q3').val().trim(),
+                                $('#q4').val().trim(),
+                                $('#q5').val().trim(),
+                                $('#q6').val().trim(),
+                                $('#q7').val().trim(),
+                                $('#q8').val().trim(),
+                                $('#q9').val().trim(),
+                                $('#q10').val().trim(),
+                            ]
 
-                $(".name").val('');
+                        };
 
-                $('#q1').val('');
-                $('#q2').val('');
-                $('#q3').val('');
-                $('#q4').val('');
-                $('#q5').val('');
-                $('#q6').val('');
-                $('#q7').val('');
-                $('#q8').val('');
-                $('#q9').val('');
-                $('#q10').val('');
+                        $(".name").val('');
 
-                
-
-                //if user enters a number greater than 5 it is logged as a 5 and a number less than 1 is logged as a 1
-                for(var i = 0; i < newFriend.scores.length; i++){
-                    if(newFriend.scores[i] > 5){
-                        newFriend.scores[i] = 5;
-                    } else if(newFriend.scores[i] < 1){
-                        newFriend.scores[i] = 1;
-                    }
-                };
+                        $('#q1').val('');
+                        $('#q2').val('');
+                        $('#q3').val('');
+                        $('#q4').val('');
+                        $('#q5').val('');
+                        $('#q6').val('');
+                        $('#q7').val('');
+                        $('#q8').val('');
+                        $('#q9').val('');
+                        $('#q10').val('');
 
 
-                console.log(newFriend);
 
-            $.post("/api/friends", newFriend)
-                .then(function (data) {
-                    console.log("survey.html", data);
-                    alert("Adding Friend...");
-                });
-        });
 
-    </script>
+                        //if user enters a number greater than 5 it is logged as a 5 and a number less than 1 is logged as a 1
+                        for (var i = 0; i < newFriend.scores.length; i++) {
+                            if (newFriend.scores[i] > 5) {
+                                newFriend.scores[i] = 5;
+                            } else if (newFriend.scores[i] < 1) {
+                                newFriend.scores[i] = 1;
+                            }
+                        };
+
+
+                        console.log(newFriend);
+
+                        $.post("/api/friends", newFriend)
+                            .then(function (compatable) {
+                                console.log("survey.html", compatable);
+                                alert("Adding Friend...");
+
+                                //data-toggle='modal' data-target='#m1'
+                                var modal = $("#add-btn");
+                                modal.attr('data-toggle', 'modal');
+                                modal.attr('data-target', '#m1');
+                                //add h3 tag to modal body with compatable.name and compatable.difference
+                                var modalDiv = $('.modal-body');
+                                modalDiv.prepend(('<h3>You are compatable with: </h3>') + compatable.name);
+                                modalDiv.prepend(('<h3>You are have a small difference of only: </h3>') + compatable.difference);
+
+                                $('#m1').modal('toggle');
+                            });
+                    });
+
+                </script>
 
 </body>
 
